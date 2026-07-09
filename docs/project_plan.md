@@ -29,3 +29,12 @@ Source 2
 ## Status
 
 Project started.
+## Source 1 Notes
+
+Observations
+
+- The API returns JSON data.
+- One report contains patient information.
+- Each report can contain one or more drugs.
+- Each report can contain one or more reactions.
+- Drug information is nested inside the patient object.
