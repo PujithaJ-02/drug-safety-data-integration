@@ -160,5 +160,9 @@ cython_debug/
 #.idea/
 # Generated datasets
 data/processed/*.csv
+
+# Raw datasets
+data/raw/
+
 # Mac files
 .DS_Store
