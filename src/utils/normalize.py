@@ -4,6 +4,7 @@ In this file, I define reusable functions that standardize
 drug names before matching datasets.
 """
 import string
+import re
 
 def normalize_drug_name(drug_name):
     """
@@ -19,11 +20,15 @@ def normalize_drug_name(drug_name):
 
     name = str(drug_name).strip().lower()
     name = name.translate(str.maketrans("", "", string.punctuation))
+    name = re.sub(r"(?<=[a-z]{4})\d+$", "", name)
     return name
 if __name__ == "__main__":
 
-    print(normalize_drug_name(" BONIVA "))
-    print(normalize_drug_name("LYRICA"))
-    print(normalize_drug_name(" Ibuprofen "))
-    print(normalize_drug_name("oxygen."))
+    #print(normalize_drug_name(" BONIVA "))
+    #print(normalize_drug_name("LYRICA"))
+    #print(normalize_drug_name(" Ibuprofen "))
+    #print(normalize_drug_name("oxygen."))
+    #print(normalize_drug_name("DURAGESIC-100"))
     print(normalize_drug_name("DURAGESIC-100"))
+    print(normalize_drug_name("OXYCONTIN10"))
+    print(normalize_drug_name("B12"))
