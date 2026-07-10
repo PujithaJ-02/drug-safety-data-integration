@@ -8,6 +8,7 @@ in the next steps of the project.
 from pathlib import Path
 
 import pandas as pd
+from src.utils.normalize import normalize_drug_name
 
 
 OPENFDA_FILE = Path("data/processed/clean_openfda.csv")
@@ -36,24 +37,21 @@ def exact_match_statistics(openfda_df, ndc_df):
     openfda_drugs = set(
         openfda_df["event_drug_name"]
         .dropna()
-        .str.lower()
-        .str.strip()
+        .apply(normalize_drug_name)
     )
 
     # Unique brand names
     brand_names = set(
         ndc_df["brand_name"]
         .dropna()
-        .str.lower()
-        .str.strip()
+        .apply(normalize_drug_name)
     )
 
     # Unique generic names
     generic_names = set(
         ndc_df["generic_name"]
         .dropna()
-        .str.lower()
-        .str.strip()
+        .apply(normalize_drug_name)
     )
 
     # Matches
